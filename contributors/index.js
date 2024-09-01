@@ -195,6 +195,14 @@ const list = [
 		twitter_username: '#',
 	},
 	{
+		name: 'Dzun Nurroin',
+		country: 'Indonesia',
+		role: 'Undergraduate',
+		tech_stack: ['Android', 'PHP', 'Javascript'],
+		github_username: 'DzunN86',
+		twitter_username: 'Dzun_N',
+	},
+	{
 		name: 'Divanshi',
 		country: 'India',
 		role: 'Undergraduate',
