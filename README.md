@@ -1,7 +1,7 @@
 # ✨Contribute 101
 A simple project aimed to help new developers make their first open source contribution.
 
-[![Tests](https://github.com/rocktimsaikia/contribute-101/actions/workflows/tests.yml/badge.svg)](https://github.com/rocktimsaikia/contribute-101/actions/workflows/tests.yml)
+[![Tests](https://github.com/rocktimsaikia/contribute-101/actions/workflows/tests.yml/badge.svg)](https://github.com/rocktimsaikia/contribute-101/actions/workflows/tests.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/2ae6b909-8e96-43dd-97a4-f177fe451d97/deploy-status)](https://app.netlify.com/sites/contribute-101/deploys)
 
 ![image](https://github.com/user-attachments/assets/9f9156d8-e34f-4abf-b23b-48b4a1c1457a)
 
