@@ -1,6 +1,8 @@
 # ✨Contribute 101
 A simple project aimed to help new developers make their first open source contribution.
 
+![image](https://github.com/user-attachments/assets/9f9156d8-e34f-4abf-b23b-48b4a1c1457a)
+
 > [!IMPORTANT]
 > Please keep in mind that pull requests on this project won't count towards Hacktoberfest. \
 > This project is just to help and encourage new developers to get familiar with open source contribution.
