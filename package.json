@@ -4,7 +4,10 @@
   "version": "2.0.0",
   "description": "A simple project for the first time open source contributors",
   "scripts": {
-    "format": "biome format --write ."
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write --unsafe .",
+    "format": "biome format .",
+    "format:fix": "biome format --write ."
   },
   "author": "Rocktim Saikia",
   "license": "MIT",

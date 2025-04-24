@@ -40,10 +40,12 @@ Now go to `src/contributors.js` file and add your details at the end of the file
 Please make sure to fill all the fields. Else the pull request will not be accepted.
 
 ### 4. Format your code.
-Run this command to format and fix the code.
+Run these two command to format and fix the code. \
+It will automatically fix the lint errors if any.
 
 ```bash
-npm run format
+npm run lint:fix
+npm run format:fix
 ```
 
 ### 5. Push your new changess
