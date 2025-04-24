@@ -1,2 +1,4 @@
 /node_modules
 /.git
+pnpm-lock.yaml
+package-lock.json
