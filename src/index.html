@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contributors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4"
+  >
+    <div class="max-w-4xl w-full">
+      <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
+        New Contributors 🎉
+      </h1>
+      <div
+        id="contributors-container"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- Contributor cards will be inserted here -->
+      </div>
+    </div>
+
+    <script type="module">
+      import { contributors } from "./contributors.js";
+
+      const container = document.getElementById("contributors-container");
+
+      contributors.forEach((contributor) => {
+        const card = document.createElement("div");
+        const aboutMe =
+          contributor.about_me.trim() ||
+          '<span class="text-gray-400">No bio provided...</span>';
+        card.className =
+          "bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300";
+        card.innerHTML = `
+                <img src="https://avatars.githubusercontent.com/${contributor.github_username}" alt="${contributor.name}'s avatar" class="w-20 h-20 rounded-full mx-auto mb-4" loading="lazy"/>
+                <div class="flex items-center justify-center gap-x-2">
+                <h2 class="text-lg font-semibold text-gray-800">${contributor.name}</h2>
+                    <a href="https://github.com/${contributor.github_username}" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.349-1.089.636-1.34-2.22-.253-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.31.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.479C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-600 mt-1 text-center text-sm font-semibold">${aboutMe}</p>
+                <div class="mt-4">
+                    <div class="flex justify-center flex-wrap gap-2 mt-2">
+                        ${contributor.favorite_coding_stack
+                          .slice(0, 3)
+                          .map(
+                            (tech) => `
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">${tech}</span>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            `;
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>
