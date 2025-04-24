@@ -1,38 +1,14 @@
 {
-  "name": "contribute101",
-  "version": "1.0.0",
+  "name": "contribute-101",
+  "private": true,
+  "version": "2.0.0",
   "description": "A simple project for the first time open source contributors",
-  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js -e ejs,js,css",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "test": "mocha tests/*.js --exit"
+    "format": "biome format --write ."
   },
-  "pre-commit": [
-    "lint"
-  ],
   "author": "Rocktim Saikia",
   "license": "MIT",
-  "dependencies": {
-    "ejs": "^3.0.2",
-    "express": "^4.17.1",
-    "reload": "^3.0.4"
-  },
-  "engines": {
-    "node": "8.12.0",
-    "npm": "6.4.1"
-  },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "eslint": "^8.9.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-plugin-import": "^2.20.2",
-    "mocha": "^9.2.1",
-    "nodemon": "^2.0.3",
-    "pre-commit": "^1.2.2",
-    "prettier": "^2.0.4",
-    "supertest": "^4.0.2"
+    "@biomejs/biome": "^1.9.4"
   }
 }
