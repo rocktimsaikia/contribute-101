@@ -30,7 +30,7 @@ git checkout -b "my-card"
 ```
 
 ### 3. Make the required changes.
-Now go to `src/contributors.js` file and add your details. \
+Now go to `src/contributors.js` file and add your details at the end of the file. \
 Please make sure to fill all the fields. Else the pull request will not be accepted.
 
 ### 4. Format your code.
