@@ -47,6 +47,41 @@
         <!-- Contributor cards will be inserted here -->
       </div>
     </main>
-    <script type="module" src="index.js" />
+    <script type="module">
+      import { contributors } from "./contributors.js";
+
+      const container = document.getElementById("contributors-container");
+
+      for (const contributor of contributors) {
+        console.log("Processing contributor:", contributor);
+        const username = contributor.github_username.trim();
+        const name = contributor.name.trim();
+        const stack = contributor.favorite_coding_stack.slice(0, 3);
+
+        let about = contributor.about_me.trim();
+        about = about || `<span class="no-bio">No bio provided</span>`;
+
+        const card = document.createElement("div");
+        card.classList.add("contributor-card");
+        card.innerHTML = `
+                <img src="https://avatars.githubusercontent.com/${username}" alt="${name}'s avatar" class="contributor-avatar" loading="lazy"/>
+                <div class="contributor-info">
+                    <h2 class="contributor-name">${name}</h2>
+                    <a href="https://github.com/${username}" target="_blank" class="github-link">
+                        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.349-1.089.636-1.34-2.22-.253-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.31.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.479C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="contributor-bio">${about}</p>
+                <div class="tech-stack">
+                    ${stack
+                      .map((tech) => `<span class="tech-tag">${tech}</span>`)
+                      .join("")}
+                </div>
+            `;
+        container.appendChild(card);
+      }
+    </script>
   </body>
 </html>
