@@ -4,6 +4,7 @@
   "version": "2.0.0",
   "description": "A simple project for the first time open source contributors",
   "scripts": {
+    "start": "live-server src",
     "lint": "biome lint .",
     "lint:fix": "biome lint --write --unsafe .",
     "format": "biome format .",
@@ -14,6 +15,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@tailwindcss/cli": "^4.1.4",
+    "live-server": "^1.2.2",
     "tailwindcss": "^4.1.4"
   }
 }
