@@ -1,8 +1,21 @@
 import { contributors } from "./contributors.js";
 
+console.log("Script is running!");
+console.log("Contributors:", contributors);
+
 const container = document.getElementById("contributors-container");
 
+if (!container) {
+  console.error("Container not found!");
+  throw new Error("Container not found");
+}
+
+if (!contributors || contributors.length === 0) {
+  console.warn("No contributors found!");
+}
+
 for (const contributor of contributors) {
+  console.log("Processing contributor:", contributor);
   const username = contributor.github_username.trim();
   const name = contributor.name.trim();
   const stack = contributor.favorite_coding_stack.slice(0, 3);
