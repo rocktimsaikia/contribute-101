@@ -3,9 +3,12 @@ import { contributors } from "./contributors.js";
 const container = document.getElementById("contributors-container");
 
 for (const contributor of contributors) {
+  const username = contributor.github_username.trim();
   const name = contributor.name.trim();
-  const about = contributor.about_me.trim();
   const stack = contributor.favorite_coding_stack.slice(0, 3);
+
+  let about = contributor.about_me.trim();
+  about = about || `<span class="no-bio">No bio provided</span>`;
 
   const card = document.createElement("div");
   card.classList.add("contributor-card");
@@ -19,7 +22,7 @@ for (const contributor of contributors) {
                         </svg>
                     </a>
                 </div>
-                <p class="contributor-bio">${about || <span class="no-bio">No bio provided...</span>}</p>
+                <p class="contributor-bio">${about}</p>
                 <div class="tech-stack">
                     ${stack
                       .map((tech) => `<span class="tech-tag">${tech}</span>`)
