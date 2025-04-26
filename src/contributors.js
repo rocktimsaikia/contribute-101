@@ -1118,4 +1118,18 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "React.js", "Next.js"],
     about_me: "",
   },
+  {
+    name: "Hisham",
+    github_username: "HeshamCaesar001",
+    favorite_coding_stack: [
+      "MongoDB",
+      "Express",
+      "NodeJS",
+      "NestJS",
+      "PostgresSQL",
+      "Javascript",
+      "Typescript",
+    ],
+    about_me: "",
+  },
 ];
