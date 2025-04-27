@@ -222,12 +222,6 @@ export const contributors = [
     about_me: "",
   },
   {
-    name: "Ly Chunvira",
-    github_username: "#",
-    favorite_coding_stack: ["Python", "Vue", "React"],
-    about_me: "",
-  },
-  {
     name: "UMUT EKERDIKER",
     github_username: "RealBigpunch",
     favorite_coding_stack: [
