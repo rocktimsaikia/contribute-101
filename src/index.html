@@ -53,7 +53,6 @@
       const container = document.getElementById("contributors-container");
 
       for (const contributor of contributors) {
-        console.log("Processing contributor:", contributor);
         const username = contributor.github_username.trim();
         const name = contributor.name.trim();
         const stack = contributor.favorite_coding_stack.slice(0, 3);
