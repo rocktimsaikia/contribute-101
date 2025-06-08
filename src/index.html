@@ -53,7 +53,7 @@
       for (const contributor of contributors) {
         const username = contributor.github_username.trim();
         let name = contributor.name.trim();
-        if (name.length > 20) name = name.slice(0, 20);
+        if (name.length > 20) name = name.slice(0, 20) + '..';
         const stack = contributor.favorite_coding_stack.slice(0, 3);
 
         let about = contributor.about_me.trim();
