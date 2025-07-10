@@ -1112,4 +1112,10 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "React.js", "Next.js"],
     about_me: "",
   },
+  {
+    name: "Aryan Patel",
+    github_username: "Aryan-R-Patel",
+    favorite_coding_stack: ["JavaScript", "Python", "NodeJS", "ReactJS"],
+    about_me: "CS Student | Curious Learner",
+  },
 ];
