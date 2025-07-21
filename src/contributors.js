@@ -1112,4 +1112,10 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "React.js", "Next.js"],
     about_me: "",
   },
+  {
+    name: "Atharva Mujumdar",
+    github_username: "ATHARVA-MUJUMDAR",
+    favorite_coding_stack: ["Javascript", "React", "Node.js", "HTML/CSS"],
+    about_me: "A passionate fullstack developer trying open source",
+  },
 ];
