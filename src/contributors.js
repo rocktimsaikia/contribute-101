@@ -1112,4 +1112,16 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "React.js", "Next.js"],
     about_me: "",
   },
+  {
+    name: "u-Squared",
+    github_username: "u-Squared",
+    favorite_coding_stack: [
+      "x86 Assembly",
+      "C",
+      "Bash/Shell Scripting",
+      "Laravel",
+      "Apache",
+    ],
+    about_me: "Close to the metal type of programmer",
+  },
 ];
