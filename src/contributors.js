@@ -1112,4 +1112,10 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "React.js", "Next.js"],
     about_me: "",
   },
+  {
+    name: "john Martin",
+    github_username: "JohnMartin0301",
+    favorite_coding_stack: ["Python", "HTML/CSS", "JavaScript"],
+    about_me: "",
+  },
 ];
