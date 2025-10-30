@@ -1112,4 +1112,10 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "React.js", "Next.js"],
     about_me: "",
   },
+  {
+    name: "Eldion Ahmetaj",
+    github_username: "Dion-Ahmetaj",
+    favorite_coding_stack: ["Javascript", "React.js", "Node.js"],
+    about_me: "",
+  },
 ];
