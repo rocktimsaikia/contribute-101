@@ -1118,4 +1118,10 @@ export const contributors = [
     favorite_coding_stack: ["JavaScript", "Python", "NodeJS", "ReactJS"],
     about_me: "CS Student | Curious Learner",
   },
+  {
+    name: "Raza Khan",
+    github_username: "raza-khan0108",
+    favorite_coding_stack: ["Javascript", "Python", "Node.js", "ReactJs"],
+    about_me: "Passionate Coder | Lifelong Learner",
+  },
 ];
