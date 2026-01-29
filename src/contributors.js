@@ -222,12 +222,6 @@ export const contributors = [
     about_me: "",
   },
   {
-    name: "Ly Chunvira",
-    github_username: "#",
-    favorite_coding_stack: ["Python", "Vue", "React"],
-    about_me: "",
-  },
-  {
     name: "UMUT EKERDIKER",
     github_username: "RealBigpunch",
     favorite_coding_stack: [
@@ -1131,5 +1125,35 @@ export const contributors = [
       "Typescript",
     ],
     about_me: "",
+  },
+  {
+    name: "Atharva Mujumdar",
+    github_username: "ATHARVA-MUJUMDAR",
+    favorite_coding_stack: ["Javascript", "React", "Node.js", "HTML/CSS"],
+    about_me: "A passionate fullstack developer trying open source",
+  },
+  {
+    name: "john Martin",
+    github_username: "JohnMartin0301",
+    favorite_coding_stack: ["Python", "HTML/CSS", "JavaScript"],
+    about_me: "",
+  },
+  {
+    name: "Aryan Patel",
+    github_username: "Aryan-R-Patel",
+    favorite_coding_stack: ["JavaScript", "Python", "NodeJS", "ReactJS"],
+    about_me: "CS Student | Curious Learner",
+  },
+  {
+    name: "Raza Khan",
+    github_username: "raza-khan0108",
+    favorite_coding_stack: ["Javascript", "Python", "Node.js", "ReactJs"],
+    about_me: "Passionate Coder | Lifelong Learner",
+  },
+  {
+    name: "Houssam elatmani",
+    github_username: "houssam15",
+    favorite_coding_stack: ["Flutter", "NodeJS", "Python", "NestJS"],
+    about_me: "Fullstack developer",
   },
 ];

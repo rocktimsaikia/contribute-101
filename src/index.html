@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contributors</title>
-    <!-- IMPORTANT: Comment the below line while developing locally -->
-    <base href="/contribute-101/" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="page-container">
@@ -13,33 +11,33 @@
       <header>
         <h1>Contribue-101</h1>
         <p>
-          Contribute-101 is a simple project and initiative aimed to help new
-          developers make their first open source contribution. The goal of the
-          project is to help new developers get started with open source
-          contribution and get familiar with the standard github workflow.
+          Contribute-101 is an initiative designed to guide new developers in
+          making their first open source contribution. Our goal is to help
+          beginners become comfortable with open source projects and get
+          familiar with the standard GitHub workflow.
         </p>
         <p>
-          Visit our
+          Check out our
           <a
             href="https://github.com/rocktimsaikia/contribute-101"
             target="_blank"
-            >Github Repo</a
+            >GitHub Repository</a
           >
-          for more details and a step-by-step guide on how to contribute to this
-          project. And don't forget to star the repo on 💖 while you're at it.
-          Good luck!
+          for detailed instructions and a step-by-step guide on contributing.
+          While you're there, show some love by starring the repo! 💖 Happy
+          contributing!
         </p>
 
         <p>
           This project is maintained by
-          <a href="https://rocktimsaikia.dev" target="_blank">@rocktimsaikia</a
-          >.
+          <a href="https://github.com/9bit-jedi" target="_blank">@utsah</a>.
+          Previously <a href="https://rocktimsaikia.dev" target="_blank">@rocktim</a>.
         </p>
 
         <h3>
-          Below is a list of developers who have contributed to this project and
-          have probably made their first open-source contribution ever. Next is
-          your turn!
+          Here’s a list of developers who’ve contributed to this project, many
+          of whom likely made their first-ever open source contribution. Now
+          it’s your turn to join them!
         </h3>
       </header>
 
@@ -53,9 +51,9 @@
       const container = document.getElementById("contributors-container");
 
       for (const contributor of contributors) {
-        console.log("Processing contributor:", contributor);
         const username = contributor.github_username.trim();
-        const name = contributor.name.trim();
+        let name = contributor.name.trim();
+        if (name.length > 20) name = name.slice(0, 20) + '..';
         const stack = contributor.favorite_coding_stack.slice(0, 3);
 
         let about = contributor.about_me.trim();
