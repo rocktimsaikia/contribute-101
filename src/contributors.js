@@ -1118,4 +1118,10 @@ export const contributors = [
     favorite_coding_stack: ["JavaScript", "Python", "NodeJS", "ReactJS"],
     about_me: "CS Student | Curious Learner",
   },
+  {
+    name: "Houssam elatmani",
+    github_username: "houssam15",
+    favorite_coding_stack: ["Flutter", "NodeJS", "Python", "NestJS"],
+    about_me: "Fullstack developer",
+  },
 ];
