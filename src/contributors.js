@@ -1119,6 +1119,12 @@ export const contributors = [
     about_me: "CS Student | Curious Learner",
   },
   {
+    name: "Raza Khan",
+    github_username: "raza-khan0108",
+    favorite_coding_stack: ["Javascript", "Python", "Node.js", "ReactJs"],
+    about_me: "Passionate Coder | Lifelong Learner",
+  },
+  {
     name: "Houssam elatmani",
     github_username: "houssam15",
     favorite_coding_stack: ["Flutter", "NodeJS", "Python", "NestJS"],
