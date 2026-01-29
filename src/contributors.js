@@ -1113,6 +1113,12 @@ export const contributors = [
     about_me: "",
   },
   {
+    name: "john Martin",
+    github_username: "JohnMartin0301",
+    favorite_coding_stack: ["Python", "HTML/CSS", "JavaScript"],
+    about_me: "",
+  },
+  {
     name: "Aryan Patel",
     github_username: "Aryan-R-Patel",
     favorite_coding_stack: ["JavaScript", "Python", "NodeJS", "ReactJS"],
