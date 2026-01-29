@@ -1113,6 +1113,20 @@ export const contributors = [
     about_me: "",
   },
   {
+    name: "Hisham",
+    github_username: "HeshamCaesar001",
+    favorite_coding_stack: [
+      "MongoDB",
+      "Express",
+      "NodeJS",
+      "NestJS",
+      "PostgresSQL",
+      "Javascript",
+      "Typescript",
+    ],
+    about_me: "",
+  },
+  {
     name: "Atharva Mujumdar",
     github_username: "ATHARVA-MUJUMDAR",
     favorite_coding_stack: ["Javascript", "React", "Node.js", "HTML/CSS"],
