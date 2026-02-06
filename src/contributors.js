@@ -12,6 +12,24 @@ export const contributors = [
     about_me: "",
   },
   {
+    name: "Saurabh Pathak",
+    github_username: "saurabh9323", // update if your exact username differs
+    favorite_coding_stack: [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      ".NET Web API",
+      "FastAPI",
+      "MySQL",
+      "PostgreSQL",
+      "Tailwind CSS",
+    ],
+    about_me:
+      "Full-Stack Software Engineer with experience building scalable insurance and marketplace platforms using modern web technologies.",
+  },
+  {
     name: "Samer",
     github_username: "S4M3R",
     favorite_coding_stack: ["NodeJs", "VB.NET", "Java", "Python"],
