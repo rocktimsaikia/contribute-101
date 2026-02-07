@@ -50,7 +50,7 @@
 
       const container = document.getElementById("contributors-container");
 
-      for (const contributor of contributors) {
+      for (const contributor of contributors.reverse()) {
         const username = contributor.github_username.trim();
         let name = contributor.name.trim();
         if (name.length > 20) name = name.slice(0, 20) + '..';
