@@ -1174,10 +1174,10 @@ export const contributors = [
     favorite_coding_stack: ["Flutter", "NodeJS", "Python", "NestJS"],
     about_me: "Fullstack developer",
   },
-   {
+  {
     name: "john Orellana",
     github_username: "johns70",
     favorite_coding_stack: ["Python", "HTML/CSS", "JavaScript", "nodejs"],
     about_me: "Fullstack developer | Open Source Enthusiast",
-   },
+  },
 ];
