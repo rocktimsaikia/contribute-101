@@ -1179,5 +1179,5 @@ export const contributors = [
     github_username: "johns70",
     favorite_coding_stack: ["Python", "HTML/CSS", "JavaScript", "nodejs"],
     about_me: "Fullstack developer | Open Source Enthusiast",
-  },
+  },   
 ];
