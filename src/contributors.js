@@ -1180,4 +1180,10 @@ export const contributors = [
     favorite_coding_stack: ["Python", "HTML/CSS", "JavaScript", "nodejs"],
     about_me: "Fullstack developer | Open Source Enthusiast",
   },
+  {
+    name : "Sharvesh",
+    github_username : "Sharvesh93",
+    favorite_coding_stack : ["Python","Java","C"],
+    about_me : "CS Student | Linux User",
+  },
 ];
