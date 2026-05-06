@@ -3,83 +3,265 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contributors</title>
+    <title>The Contributors’ Index — Contribute 101</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="page-container">
-    <main class="content-wrapper">
-      <header>
-        <h1>Contribue-101</h1>
-        <p>
-          Contribute-101 is an initiative designed to guide new developers in
-          making their first open source contribution. Our goal is to help
-          beginners become comfortable with open source projects and get
-          familiar with the standard GitHub workflow.
-        </p>
-        <p>
-          Check out our
-          <a
-            href="https://github.com/rocktimsaikia/contribute-101"
-            target="_blank"
-            >GitHub Repository</a
-          >
-          for detailed instructions and a step-by-step guide on contributing.
-          While you're there, show some love by starring the repo! 💖 Happy
-          contributing!
+  <body>
+    <div class="paper">
+      <div class="grain" aria-hidden="true"></div>
+
+      <main class="sheet">
+        <header class="masthead">
+          <div class="masthead-rule">
+            <span>Contribute 101 · Open Source</span>
+            <span id="masthead-count" class="masthead-count">— entries on file</span>
+          </div>
+
+          <h1 class="masthead-title">
+            <span class="t1">The</span>
+            <span class="t2">Contributors’</span>
+            <span class="t3">Index</span>
+          </h1>
+
+          <div class="masthead-foot">
+            <p class="lede">
+              A standing register of developers — many on their first-ever open
+              source contribution — who pushed a card and joined the project.
+            </p>
+            <p class="colophon">
+              Maintained by
+              <a href="https://github.com/9bit-jedi" target="_blank" rel="noopener">@utsah</a>/<a href="https://rocktimsaikia.dev" target="_blank" rel="noopener">@rocktim</a>.
+              <a href="https://github.com/rocktimsaikia/contribute-101" target="_blank" rel="noopener">Source ↗</a>
+            </p>
+          </div>
+        </header>
+
+        <section class="rule" aria-hidden="true">
+          <span>Front Page</span>
+        </section>
+
+        <section class="spotlight" aria-label="Featured contributor">
+          <div class="spotlight-tools">
+            <p class="kicker">
+              <span class="kicker-dot" aria-hidden="true"></span>
+              Featured at random
+            </p>
+            <button id="spotlight-shuffle" class="shuffle" type="button">
+              <span class="shuffle-glyph" aria-hidden="true">↻</span>
+              Reshuffle
+            </button>
+          </div>
+          <div id="spotlight-card" class="spotlight-card"></div>
+        </section>
+
+        <section class="rule" aria-hidden="true">
+          <span>The Register</span>
+        </section>
+
+        <div class="toolbar">
+          <label class="search">
+            <span class="search-prefix" aria-hidden="true">▸</span>
+            <input
+              type="search"
+              id="search"
+              class="search-input"
+              placeholder="search by name or @handle…"
+              autocomplete="off"
+            />
+          </label>
+          <span id="search-count" class="search-count" aria-live="polite"></span>
+        </div>
+
+        <div id="contributors-container" class="register"></div>
+
+        <p id="empty-state" class="empty-state" hidden>
+          <span class="empty-mark" aria-hidden="true">∅</span>
+          Nothing on file matches that query.
         </p>
 
-        <p>
-          This project is maintained by
-          <a href="https://github.com/9bit-jedi" target="_blank">@utsah</a>.
-          Previously <a href="https://rocktimsaikia.dev" target="_blank">@rocktim</a>.
-        </p>
+        <footer class="endmark">
+          <span class="endmark-fin">— fin —</span>
+          <span class="endmark-set">
+            Set in
+            <i>Fraunces</i>, <i>Newsreader</i> &amp;
+            <span class="mono">JetBrains Mono</span>
+          </span>
+        </footer>
+      </main>
+    </div>
 
-        <h3>
-          Here’s a list of developers who’ve contributed to this project, many
-          of whom likely made their first-ever open source contribution. Now
-          it’s your turn to join them!
-        </h3>
-      </header>
-
-      <div id="contributors-container" class="contributors-grid">
-        <!-- Contributor cards will be inserted here -->
-      </div>
-    </main>
     <script type="module">
       import { contributors } from "./contributors.js";
 
-      const container = document.getElementById("contributors-container");
+      const GITHUB_ICON = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.349-1.089.636-1.34-2.22-.253-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.31.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.479C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+        </svg>
+      `;
 
-      for (const contributor of contributors.reverse()) {
-        const username = contributor.github_username.trim();
-        let name = contributor.name.trim();
-        if (name.length > 20) name = name.slice(0, 20) + '..';
-        const stack = contributor.favorite_coding_stack.slice(0, 3);
-
-        let about = contributor.about_me.trim();
-        about = about || `<span class="no-bio">No bio provided</span>`;
-
-        const card = document.createElement("div");
-        card.classList.add("contributor-card");
-        card.innerHTML = `
-                <img src="https://avatars.githubusercontent.com/${username}" alt="${name}'s avatar" class="contributor-avatar" loading="lazy"/>
-                <div class="contributor-info">
-                    <h2 class="contributor-name">${name}</h2>
-                    <a href="https://github.com/${username}" target="_blank" class="github-link">
-                        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.349-1.089.636-1.34-2.22-.253-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.31.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.479C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
-                <p class="contributor-bio">${about}</p>
-                <div class="tech-stack">
-                    ${stack
-                      .map((tech) => `<span class="tech-tag">${tech}</span>`)
-                      .join("")}
-                </div>
-            `;
-        container.appendChild(card);
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
       }
+
+      function pad(n) {
+        return String(n).padStart(3, "0");
+      }
+
+      function normalize(c) {
+        const username = c.github_username.trim();
+        const name = c.name.trim();
+        const stack = c.favorite_coding_stack ?? [];
+        const about = (c.about_me ?? "").trim();
+        const location = (c.location ?? "").trim();
+        const emoji = (c.favorite_emoji ?? "").trim();
+        const haystack = [c.name, c.github_username].join(" ").toLowerCase();
+        return { username, name, stack, about, location, emoji, haystack };
+      }
+
+      function renderGridCard(c, number) {
+        const { username, name, stack, about, location, emoji } = normalize(c);
+        const display = name.length > 22 ? `${name.slice(0, 22)}..` : name;
+        const visible = stack.slice(0, 3);
+        const aboutHtml = about
+          ? escapeHtml(about)
+          : `<span class="no-bio">— no bio on file —</span>`;
+
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="card-stamp">
+            <span class="num">№ ${pad(number)}</span>
+            ${location ? `<span class="loc">📍 ${escapeHtml(location)}</span>` : ""}
+            ${emoji ? `<span class="emoji" aria-hidden="true">${escapeHtml(emoji)}</span>` : ""}
+          </div>
+          <div class="card-figure">
+            <div class="avatar">
+              <img src="https://avatars.githubusercontent.com/${escapeHtml(username)}" alt="" loading="lazy"/>
+            </div>
+            <a class="card-gh" href="https://github.com/${escapeHtml(username)}" target="_blank" rel="noopener" aria-label="${escapeHtml(name)}'s GitHub profile">
+              ${GITHUB_ICON}
+            </a>
+          </div>
+          <h3 class="card-name">${escapeHtml(display)}</h3>
+          <p class="card-handle">@${escapeHtml(username)}</p>
+          <p class="card-bio">${aboutHtml}</p>
+          <ul class="stack">
+            ${visible.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}
+          </ul>
+        `;
+        return card;
+      }
+
+      function renderSpotlightCard(c, number) {
+        const { username, name, stack, about, location, emoji } = normalize(c);
+        const visible = stack.slice(0, 5);
+        const aboutHtml = about
+          ? escapeHtml(about)
+          : `<span class="no-bio">— no bio on file —</span>`;
+
+        const card = document.createElement("article");
+        card.className = "spot";
+        card.innerHTML = `
+          <div class="spot-figure">
+            <div class="avatar avatar-lg">
+              <img src="https://avatars.githubusercontent.com/${escapeHtml(username)}" alt=""/>
+            </div>
+            <span class="spot-stamp">№ ${pad(number)}</span>
+          </div>
+          <div class="spot-body">
+            <p class="spot-kicker">
+              Profile ${emoji ? `<span class="emoji" aria-hidden="true">${escapeHtml(emoji)}</span>` : ""}
+            </p>
+            <h2 class="spot-name">${escapeHtml(name)}</h2>
+            <p class="spot-meta">
+              <a href="https://github.com/${escapeHtml(username)}" target="_blank" rel="noopener">@${escapeHtml(username)}</a>
+              ${location ? `<span class="bullet">·</span><span class="spot-loc">📍 ${escapeHtml(location)}</span>` : ""}
+            </p>
+            <p class="spot-bio">${aboutHtml}</p>
+            <ul class="stack stack-lg">
+              ${visible.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}
+            </ul>
+          </div>
+        `;
+        return card;
+      }
+
+      // ---- Build grid (newest first, but each card keeps its source-order number) ----
+      const indexed = contributors.map((c, i) => ({
+        contributor: c,
+        number: i + 1,
+        ...normalize(c),
+      }));
+      const ordered = [...indexed].reverse();
+
+      const container = document.getElementById("contributors-container");
+      const searchInput = document.getElementById("search");
+      const searchCount = document.getElementById("search-count");
+      const mastheadCount = document.getElementById("masthead-count");
+      const emptyState = document.getElementById("empty-state");
+
+      const cards = ordered.map((entry) => {
+        const el = renderGridCard(entry.contributor, entry.number);
+        container.appendChild(el);
+        return { el, haystack: entry.haystack };
+      });
+
+      mastheadCount.textContent = `№ ${pad(cards.length)} entries on file`;
+
+      function applyFilter(query) {
+        const q = query.trim().toLowerCase();
+        let visible = 0;
+        for (const { el, haystack } of cards) {
+          const match = !q || haystack.includes(q);
+          el.hidden = !match;
+          if (match) visible++;
+        }
+        searchCount.textContent = q
+          ? `${pad(visible)} of ${pad(cards.length)} matching`
+          : `${pad(cards.length)} on file`;
+        emptyState.hidden = visible !== 0;
+      }
+
+      searchInput.addEventListener("input", (e) => applyFilter(e.target.value));
+      applyFilter("");
+
+      // ---- Spotlight ----
+      const spotlightCard = document.getElementById("spotlight-card");
+      const shuffleButton = document.getElementById("spotlight-shuffle");
+
+      function pickSpotlight(excludeIndex = -1) {
+        if (indexed.length === 0) return;
+        let idx = Math.floor(Math.random() * indexed.length);
+        if (indexed.length > 1 && idx === excludeIndex) {
+          idx = (idx + 1) % indexed.length;
+        }
+        const entry = indexed[idx];
+        spotlightCard.dataset.index = String(idx);
+        spotlightCard.classList.remove("is-flipping");
+        // Force reflow to restart the entrance animation on shuffle
+        void spotlightCard.offsetWidth;
+        spotlightCard.classList.add("is-flipping");
+        spotlightCard.replaceChildren(
+          renderSpotlightCard(entry.contributor, entry.number),
+        );
+      }
+
+      shuffleButton.addEventListener("click", () => {
+        const current = Number(spotlightCard.dataset.index ?? -1);
+        pickSpotlight(current);
+      });
+      pickSpotlight();
     </script>
   </body>
 </html>
