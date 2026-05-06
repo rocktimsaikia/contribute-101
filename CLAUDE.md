@@ -31,7 +31,7 @@ Rendering quirks to preserve when editing `index.html`:
 
 Page also includes:
 - A **spotlight section** at the top that picks a random contributor on load (and via a Shuffle button); avoids re-picking the same one on shuffle when more than one entry exists.
-- A **search bar** that filters the grid by matching against `name`, `github_username`, `location`, and stack entries (case-insensitive substring match).
+- A **search bar** that filters the grid by matching against `name` and `github_username` only (case-insensitive substring match).
 
 ## Reviewing contributor PRs
 
