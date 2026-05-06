@@ -38,3 +38,13 @@ jobs:
 
       - name: Format Check
         run: pnpm run format
+
+      - name: Validate contributors
+        run: |
+          if [ -n "${{ github.base_ref }}" ]; then
+            git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+            node scripts/validate-contributors.mjs --base "origin/${{ github.base_ref }}"
+          else
+            git fetch --no-tags --depth=1 origin main || true
+            node scripts/validate-contributors.mjs --base origin/main
+          fi

@@ -58,14 +58,18 @@ Each entry looks like this:
 Required: `name`, `github_username`, `favorite_coding_stack`, `about_me`. \
 Optional: `location` (shown under your name on the card) and `favorite_emoji` (shown next to your name).
 
-### 4. Format your code.
-Run these two command to format and fix the code. \
-It will automatically fix the lint errors if any.
+### 4. Format and validate your code.
+Run these commands to format the code and validate your entry. \
+The first two will automatically fix lint/format errors if any. \
+The third checks that your new entry has every required field filled.
 
 ```bash
 npm run lint:fix
 npm run format:fix
+npm run validate
 ```
+
+> CI runs the same `npm run validate` check on every PR. If your new entry is missing a required field or duplicates an existing GitHub handle, the **Validate contributors** check will fail and the PR cannot be merged.
 
 ### 5. Push your new changess
 

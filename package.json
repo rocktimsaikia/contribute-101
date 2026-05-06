@@ -8,7 +8,8 @@
     "lint": "biome lint .",
     "lint:fix": "biome lint --write --unsafe .",
     "format": "biome format .",
-    "format:fix": "biome format --write ."
+    "format:fix": "biome format --write .",
+    "validate": "node scripts/validate-contributors.mjs"
   },
   "author": "Rocktim Saikia",
   "license": "MIT",
