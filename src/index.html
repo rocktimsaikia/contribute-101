@@ -41,45 +41,157 @@
         </h3>
       </header>
 
+      <section class="spotlight-section" aria-label="Contributor spotlight">
+        <div class="spotlight-header">
+          <h2>✨ Contributor Spotlight</h2>
+          <button id="spotlight-shuffle" class="spotlight-shuffle" type="button" aria-label="Pick another contributor">
+            🎲 Shuffle
+          </button>
+        </div>
+        <div id="spotlight-card" class="spotlight-card"></div>
+      </section>
+
+      <div class="search-container">
+        <input
+          type="search"
+          id="search"
+          class="search-input"
+          placeholder="Search by name, username, stack, or location…"
+          autocomplete="off"
+        />
+        <span id="search-count" class="search-count" aria-live="polite"></span>
+      </div>
+
       <div id="contributors-container" class="contributors-grid">
         <!-- Contributor cards will be inserted here -->
       </div>
+
+      <p id="empty-state" class="empty-state" hidden>
+        No contributors match your search.
+      </p>
     </main>
     <script type="module">
       import { contributors } from "./contributors.js";
 
-      const container = document.getElementById("contributors-container");
+      const GITHUB_ICON_SVG = `
+        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.349-1.089.636-1.34-2.22-.253-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.31.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.479C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+        </svg>
+      `;
 
-      for (const contributor of contributors.reverse()) {
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+      }
+
+      function normalize(contributor) {
         const username = contributor.github_username.trim();
         let name = contributor.name.trim();
-        if (name.length > 20) name = name.slice(0, 20) + '..';
+        if (name.length > 20) name = name.slice(0, 20) + "..";
         const stack = contributor.favorite_coding_stack.slice(0, 3);
+        const about = contributor.about_me.trim();
+        const location = (contributor.location ?? "").trim();
+        const emoji = (contributor.favorite_emoji ?? "").trim();
+        const haystack = [
+          contributor.name,
+          contributor.github_username,
+          location,
+          ...contributor.favorite_coding_stack,
+        ]
+          .join(" ")
+          .toLowerCase();
+        return { username, name, stack, about, location, emoji, haystack };
+      }
 
-        let about = contributor.about_me.trim();
-        about = about || `<span class="no-bio">No bio provided</span>`;
+      function renderCard(contributor, { variant = "card" } = {}) {
+        const { username, name, stack, about, location, emoji } = normalize(contributor);
+        const aboutHtml = about
+          ? escapeHtml(about)
+          : `<span class="no-bio">No bio provided</span>`;
+        const locationHtml = location
+          ? `<p class="contributor-location">📍 ${escapeHtml(location)}</p>`
+          : "";
+        const emojiHtml = emoji
+          ? `<span class="contributor-emoji" title="Favorite emoji">${escapeHtml(emoji)}</span>`
+          : "";
+        const className = variant === "spotlight" ? "spotlight-card-inner" : "contributor-card";
 
         const card = document.createElement("div");
-        card.classList.add("contributor-card");
+        card.className = className;
         card.innerHTML = `
-                <img src="https://avatars.githubusercontent.com/${username}" alt="${name}'s avatar" class="contributor-avatar" loading="lazy"/>
-                <div class="contributor-info">
-                    <h2 class="contributor-name">${name}</h2>
-                    <a href="https://github.com/${username}" target="_blank" class="github-link">
-                        <svg class="github-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.089 2.91.833.091-.647.349-1.089.636-1.34-2.22-.253-4.555-1.112-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.646 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.376.203 2.393.1 2.646.641.699 1.028 1.592 1.028 2.683 0 3.841-2.337 4.687-4.565 4.935.359.31.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.479C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
-                <p class="contributor-bio">${about}</p>
-                <div class="tech-stack">
-                    ${stack
-                      .map((tech) => `<span class="tech-tag">${tech}</span>`)
-                      .join("")}
-                </div>
-            `;
-        container.appendChild(card);
+          <img src="https://avatars.githubusercontent.com/${escapeHtml(username)}" alt="${escapeHtml(name)}'s avatar" class="contributor-avatar" loading="lazy"/>
+          <div class="contributor-info">
+            <h2 class="contributor-name">${escapeHtml(name)} ${emojiHtml}</h2>
+            <a href="https://github.com/${escapeHtml(username)}" target="_blank" class="github-link" aria-label="${escapeHtml(name)}'s GitHub profile">
+              ${GITHUB_ICON_SVG}
+            </a>
+          </div>
+          ${locationHtml}
+          <p class="contributor-bio">${aboutHtml}</p>
+          <div class="tech-stack">
+            ${stack.map((tech) => `<span class="tech-tag">${escapeHtml(tech)}</span>`).join("")}
+          </div>
+        `;
+        return card;
       }
+
+      // ---- Grid + search ----
+      const ordered = [...contributors].reverse();
+      const indexed = ordered.map((c) => ({ contributor: c, ...normalize(c) }));
+
+      const container = document.getElementById("contributors-container");
+      const searchInput = document.getElementById("search");
+      const searchCount = document.getElementById("search-count");
+      const emptyState = document.getElementById("empty-state");
+
+      const cardElements = indexed.map((entry) => {
+        const el = renderCard(entry.contributor);
+        container.appendChild(el);
+        return { el, haystack: entry.haystack };
+      });
+
+      function applyFilter(query) {
+        const q = query.trim().toLowerCase();
+        let visible = 0;
+        for (const { el, haystack } of cardElements) {
+          const match = !q || haystack.includes(q);
+          el.hidden = !match;
+          if (match) visible++;
+        }
+        searchCount.textContent = q
+          ? `${visible} of ${cardElements.length} contributors`
+          : `${cardElements.length} contributors`;
+        emptyState.hidden = visible !== 0;
+      }
+
+      searchInput.addEventListener("input", (e) => applyFilter(e.target.value));
+      applyFilter("");
+
+      // ---- Spotlight ----
+      const spotlightCard = document.getElementById("spotlight-card");
+      const shuffleButton = document.getElementById("spotlight-shuffle");
+
+      function pickSpotlight(excludeIndex = -1) {
+        if (contributors.length === 0) return;
+        let idx = Math.floor(Math.random() * contributors.length);
+        if (contributors.length > 1 && idx === excludeIndex) {
+          idx = (idx + 1) % contributors.length;
+        }
+        spotlightCard.dataset.index = String(idx);
+        spotlightCard.replaceChildren(
+          renderCard(contributors[idx], { variant: "spotlight" }),
+        );
+      }
+
+      shuffleButton.addEventListener("click", () => {
+        const current = Number(spotlightCard.dataset.index ?? -1);
+        pickSpotlight(current);
+      });
+      pickSpotlight();
     </script>
   </body>
 </html>
