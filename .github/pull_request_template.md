@@ -8,7 +8,6 @@
   - [ ] `github_username` (matches my GitHub handle)
   - [ ] `favorite_coding_stack` (at least one item)
   - [ ] `about_me` (a short bio)
-- [ ] If I added optional fields, they are non-empty:
   - [ ] `location` (e.g. `"City, Country"`)
   - [ ] `favorite_emoji` (e.g. `"🚀"`)
 - [ ] I ran `npm run lint:fix` and `npm run format:fix` locally.

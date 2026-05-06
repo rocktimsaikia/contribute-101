@@ -7,9 +7,15 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "..");
 const dataPath = resolve(root, "src/contributors.js");
 
-const REQUIRED = ["name", "github_username", "favorite_coding_stack", "about_me"];
-const OPTIONAL = ["location", "favorite_emoji"];
-const ALLOWED = new Set([...REQUIRED, ...OPTIONAL]);
+const REQUIRED = [
+  "name",
+  "github_username",
+  "favorite_coding_stack",
+  "about_me",
+  "location",
+  "favorite_emoji",
+];
+const ALLOWED = new Set(REQUIRED);
 // GitHub handles: alphanumeric + single hyphens, cannot start or end with hyphen,
 // no consecutive hyphens, 1–39 characters.
 const USERNAME_RE = /^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/;
@@ -82,9 +88,13 @@ contributors.forEach((entry, idx) => {
   const isNewEntry = isNew(entry.github_username);
   if (isNewEntry) newCount++;
 
-  for (const field of REQUIRED) {
-    if (!(field in entry)) {
-      errors.push(`${tag}: missing required field "${field}"`);
+  // Presence is enforced strictly for new entries only; entries that already
+  // exist on the base ref are grandfathered (they may pre-date a field).
+  if (isNewEntry) {
+    for (const field of REQUIRED) {
+      if (!(field in entry)) {
+        errors.push(`${tag}: missing required field "${field}"`);
+      }
     }
   }
 
@@ -133,18 +143,18 @@ contributors.forEach((entry, idx) => {
   }
 
   if ("location" in entry) {
-    if (typeof entry.location !== "string" || entry.location.trim() === "") {
-      errors.push(
-        `${tag}: "location" must be a non-empty string when present (or remove the field)`,
-      );
+    if (typeof entry.location !== "string") {
+      errors.push(`${tag}: "location" must be a string`);
+    } else if (entry.location.trim() === "" && isNewEntry) {
+      errors.push(`${tag}: "location" must be a non-empty string (e.g. "City, Country")`);
     }
   }
 
   if ("favorite_emoji" in entry) {
-    if (typeof entry.favorite_emoji !== "string" || entry.favorite_emoji.trim() === "") {
-      errors.push(
-        `${tag}: "favorite_emoji" must be a non-empty string when present (or remove the field)`,
-      );
+    if (typeof entry.favorite_emoji !== "string") {
+      errors.push(`${tag}: "favorite_emoji" must be a string`);
+    } else if (entry.favorite_emoji.trim() === "" && isNewEntry) {
+      errors.push(`${tag}: "favorite_emoji" must be a non-empty string (e.g. "🚀")`);
     }
   }
 

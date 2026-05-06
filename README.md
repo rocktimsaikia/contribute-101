@@ -41,7 +41,7 @@ npm install
 Now go to `src/contributors.js` file and add your details at the end of the file. \
 Please make sure to fill all the required fields. Else the pull request will not be accepted.
 
-Each entry looks like this:
+Each entry looks like this — **all fields are required**:
 
 ```js
 {
@@ -49,14 +49,10 @@ Each entry looks like this:
   github_username: "your-github-handle",
   favorite_coding_stack: ["JavaScript", "Python", "..."],
   about_me: "A short bio about yourself",
-  // Optional — feel free to add either or both:
   location: "City, Country",
   favorite_emoji: "🚀",
 }
 ```
-
-Required: `name`, `github_username`, `favorite_coding_stack`, `about_me`. \
-Optional: `location` (shown under your name on the card) and `favorite_emoji` (shown next to your name).
 
 ### 4. Format and validate your code.
 Run these commands to format the code and validate your entry. \
