@@ -3,7 +3,8 @@ A simple project aimed to help new developers make their first open source contr
 
 [![Tests](https://github.com/rocktimsaikia/contribute-101/actions/workflows/tests.yml/badge.svg)](https://github.com/rocktimsaikia/contribute-101/actions/workflows/tests.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/2ae6b909-8e96-43dd-97a4-f177fe451d97/deploy-status)](https://app.netlify.com/sites/contribute-101/deploys)
 
-![image](https://github.com/user-attachments/assets/9f9156d8-e34f-4abf-b23b-48b4a1c1457a)
+<img width="1530" height="880" alt="Screenshot From 2026-05-13 20-17-03" src="https://github.com/user-attachments/assets/d48eb1aa-bab6-4090-ab6e-27de5f5ec9b1" />
+
 
 > [!IMPORTANT]
 > Please keep in mind that pull requests on this project won't count towards Hacktoberfest. \
