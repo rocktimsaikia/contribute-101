@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { execSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "..");
@@ -22,7 +22,7 @@ const USERNAME_RE = /^[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}$/;
 
 let contributors;
 try {
-  ({ contributors } = await import(dataPath));
+  ({ contributors } = await import(pathToFileURL(dataPath).href));
 } catch (err) {
   console.error("Could not import src/contributors.js — file is invalid JavaScript.");
   console.error(err.message);

@@ -1188,4 +1188,12 @@ export const contributors = [
     location: "Delhi, India",
     favorite_emoji: "😉",
   },
+  {
+    name: "Kevin remon",
+    github_username: "KEvons18",
+    favorite_coding_stack: ["C++", "Python"],
+    about_me: "A passionate developer exploring open source and a huge AI enthusiast",
+    location: "cairo , Egypt",
+    favorite_emoji: "🤓",
+  },
 ];
